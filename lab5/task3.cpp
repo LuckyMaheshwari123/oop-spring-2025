@@ -18,11 +18,11 @@ public:
     }
 
    
-    string getName() const {
+    string getName()  {
         return name;
     }
 
-    string getDepartment() const {
+    string getDepartment()  {
         return department;
     }
 };
