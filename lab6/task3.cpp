@@ -1,18 +1,3 @@
-/*
-Classes & Members
-1. Base Class: Person
-o Data Members: name (string), age (int)
-o Member Functions: displayDetails()
-2. Derived Class: Teacher
-o Data Member: subject (string)
-o Member Functions: displayDetails()
-3. Derived Class: Researcher
-o Data Member: researchArea (string)
-o Member Functions: displayDetails()
-4. Derived Class: Professor
-o Data Member: publications (int)
-o Member Functions: displayDetails()
-*/
 #include<iostream>
 using namespace std;
 class Person{
@@ -33,11 +18,35 @@ class Teacher:public Person{
     Teacher(string name,int age,string subject):Person(name,age),subject(subject){}
     void display(){
     Person::display();
-    cout<<subject<<endl;
+    cout<<"Subject:"<<subject<<endl;
+    }
+};
+
+class Researcher:public Teacher{
+    protected:
+    string researchArea;
+    public:
+    Researcher(string name,int age,string subject,string researchArea):Teacher(name,age,subject),researchArea(researchArea){}
+    void display(){
+    Teacher::display();
+    cout<<"reserachArea:"<<researchArea<<endl;
     }
 };
 
 
+class Professor:public Researcher{
+    protected:
+    int publications;
+    public:
+    Professor(string name,int age,string subject,string researchArea,int publications):Researcher(name,age,subject,researchArea),publications(publications){}
+    void display(){
+    Researcher::display();
+    cout<<"No of publication is:"<<publications<<endl;
+    }
+};
+
 int main(){
+    Professor p1("Lucky",30,"computer science","AI",10);
+    p1.display();
 
 }
