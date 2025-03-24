@@ -96,7 +96,7 @@ class Course
 };
 int main()
 {
-  student s("CS", 3.1, "2024", "asad", "lahore", "0309999999", "asadahmedk09@gmail.com");
+  student s("CS", 2.79, "2024", "Lucky", "karachi", "0309988888", "lamaheshwari9@gmail.com");
   Person *p = &s;
   p->displayInfo();
 }
