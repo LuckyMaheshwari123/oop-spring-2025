@@ -68,7 +68,7 @@ class polygon: public shape
 };
 int main()
 {
-  Circle c(5,3,"same","white","black");
+  Circle c(8,2,"same","blue","white");
   shape *s = &c;
   s->calculateArea();
   s->calculatePerimeter();
