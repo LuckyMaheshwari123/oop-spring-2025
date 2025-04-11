@@ -1,0 +1,54 @@
+#include <iostream>
+using namespace std;
+
+class Currency {
+private:
+    double data;
+
+public:
+    Currency(double value = 0.0) : data(value) {}
+
+    Currency operator-() const {
+        return Currency(-data);
+    }
+
+    Currency operator+(const Currency& other) const {
+        return Currency(data + other.data);
+    }
+
+    Currency operator-(const Currency& other) const {
+        return Currency(data - other.data);
+    }
+
+    Currency& operator+=(const Currency& other) {
+        data += other.data;
+        return *this;
+    }
+
+    Currency& operator-=(const Currency& other) {
+        data -= other.data;
+        return *this;
+    }
+
+    friend ostream& operator<<(ostream& os, const Currency& c) {
+        os << "$" << c.data;
+        return os;
+    }
+};
+
+int main() {
+    Currency c1(100), c2(50);
+    Currency c3 = c1 + c2;
+    Currency c4 = c1 - c2;
+    Currency c5 = -c1;
+    c1 += c2;
+    c2 -= Currency(10);
+
+    cout << "c3: " << c3 << endl;
+    cout << "c4: " << c4 << endl;
+    cout << "c5: " << c5 << endl;
+    cout << "Updated c1: " << c1 << endl;
+    cout << "Updated c2: " << c2 << endl;
+
+    return 0;
+}
