@@ -1,0 +1,34 @@
+#include <iostream>
+using namespace std;
+class Librarian;
+class Book{
+    string title;
+    double price;
+    public:
+    Book(string title,double price):title(title),price(price){}
+    friend class Librarian;
+};
+class Librarian{
+    public:
+    void display(const Book&b1){
+        cout<<"Book Title:"<<b1.title<<endl;
+        cout<<"Book price:"<<b1.price<<endl;
+    }
+    void applyDiscount( Book& b1,double d){
+        b1.price=b1.price-d;
+        cout<<"Discounted price is:"<<b1.price<<endl;
+    }
+    
+};
+
+
+int main()
+{
+    
+    Book b1("Luck can give success",1000);
+    Librarian l1;
+    l1.display(b1);
+    l1.applyDiscount(b1,100);
+
+    return 0;
+}
