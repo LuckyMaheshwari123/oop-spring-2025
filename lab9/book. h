@@ -1,33 +1,96 @@
+#ifndef LIBRARY_H
+#define LIBRARY_H
 
-#ifndef BOOK_H // Include guard start
-#define BOOK_H
-#include<string>
-using namespace std;
-class Book{
-	string title;
-	string author;
-	string isbn;
-	public:
-	Book(){
-		title="unknown";
-		author="unknown";
-		isbn="unknown";
-	}
-	Book(string title,string author,string isbn):title(title),author(author),isbn(isbn){};
-	string getTitle(){
-		return title;
-	}
-	string getAuthor(){
-		return author;
-	}
-	string getIsbn(){
-		return isbn;
-	}
-	
+#include <string>
+#include <iostream>
+
+using namespace std; 
+class Book {
+private:
+    string title;
+    string author;
+    string isbn;
+
+public:
+    Book(const string& t, const string& a, const string& i)
+        : title(t), author(a), isbn(i) {}
+
+    string getTitle() const {
+        return title;
+    }
+
+    string getAuthor() const {
+        return author;
+    }
+
+    string getIsbn() const {
+        return isbn;
+    }
 };
+
+class Library {
+private:
+    Book** collection;  // Pointer to an array of Book pointers
+    int size;           
+    int capacity;     
+    void resize() {
+        capacity *= 2; 
+        Book** newCollection = new Book*[capacity];
+
+      
+        for (int i = 0; i < size; i++) {
+            newCollection[i] = collection[i];
+        }
+
+        delete[] collection;  
+        collection = newCollection;
+    }
+
+public:
+   
+    Library() : size(0), capacity(2) {
+        collection = new Book*[capacity]; 
+    }
+
+    ~Library() {
+        for (int i = 0; i < size; i++) {
+            delete collection[i]; 
+        }
+        delete[] collection;  
+    }
+
+    
+    void addBook(const Book& book) {
+        if (size == capacity) {
+            resize();  
+        }
+        collection[size] = new Book(book);  
+        size++;
+    }
+
+    void removeBook(const string& isbn) {
+        for (int i = 0; i < size; i++) {
+            if (collection[i]->getIsbn() == isbn) {
+                delete collection[i];  
+                for (int j = i; j < size - 1; ++j) {
+                    collection[j] = collection[j + 1];  
+                }
+                size--;
+                return;
+            }
+        }
+        cout << "Book with ISBN " << isbn << " not found.\n";
+    }
+
+    
+    Book* searchBook(const string& isbn) {
+        for (int i = 0; i < size; i++) {
+            if (collection[i]->getIsbn() == isbn) {
+                return collection[i];  
+            }
+        }
+        return nullptr;  
+    }
+};
+
 #endif
-
-
-
-
-
