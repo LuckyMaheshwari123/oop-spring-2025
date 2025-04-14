@@ -6,6 +6,7 @@ class Vehicle{
 	public:
 		virtual double getdailyRate()=0;
 		virtual void display()=0;
+		virtual ~Vehicle() {} // Virtual destructor for proper cleanup
 	};
 class Car:public Vehicle{
 	string Cmodel;
@@ -51,10 +52,15 @@ class Bike:public Vehicle{
 };	
 			
 int main(){
+ 
 	Car c1("alto",120000);
-	Bike b1("Honda",30000.0);
-	c1.getdailyRate();
-	c1.display();
-	b1.getdailyRate();
-	b1.display();
+	Bike b1("Honda",30000);
+	Vehicle *v1=&c1;
+
+	Vehicle *v2=&b1;
+	
+	cout<<v1->getdailyRate()<<endl;
+	v1->display();
+	cout<<v2->getdailyRate()<<endl;
+	v2->display();
 }
