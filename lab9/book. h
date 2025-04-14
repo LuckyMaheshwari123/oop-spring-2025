@@ -1,0 +1,33 @@
+
+#ifndef BOOK_H // Include guard start
+#define BOOK_H
+#include<string>
+using namespace std;
+class Book{
+	string title;
+	string author;
+	string isbn;
+	public:
+	Book(){
+		title="unknown";
+		author="unknown";
+		isbn="unknown";
+	}
+	Book(string title,string author,string isbn):title(title),author(author),isbn(isbn){};
+	string getTitle(){
+		return title;
+	}
+	string getAuthor(){
+		return author;
+	}
+	string getIsbn(){
+		return isbn;
+	}
+	
+};
+#endif
+
+
+
+
+
