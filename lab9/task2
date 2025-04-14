@@ -1,0 +1,72 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+class Smartdevice{
+	virtual void turnon()=0;
+	virtual void turnoff()=0;
+	virtual bool getStatus()=0;
+};
+
+class Lightbulb:Smartdevice{
+	bool isOn;
+	int brightness;
+	public:
+	Lightbulb(){
+		isOn=false;
+		brightness=0;
+	}
+	void turnon(){
+		isOn=true;
+		cout<<"bulb has turnoned successfully"<<endl;
+	}
+	void turnoff(){
+		isOn=false;
+		cout<<"bulb has turned off successfully"<<endl;
+	}
+	bool getStatus(){
+		return isOn;
+	}
+		
+};
+
+class Thermosat:Smartdevice{
+	bool isOn;
+	double temprature;
+	public:
+	Thermosat(){
+		isOn=false;
+		temprature=0.0;
+	}
+	void turnon(){
+		isOn=true;
+		cout<<"Thermosat has turnoned successfully"<<endl;
+	}
+	void turnoff(){
+		isOn=false;
+		cout<<"Thermosat has turned off successfully"<<endl;
+	}
+	bool getStatus(){
+		return isOn;
+	}
+		
+};
+
+
+
+int main(){
+	Lightbulb l1;
+	Thermosat t1;
+	t1.turnon();
+
+	cout<<t1.getStatus()<<endl;
+
+	t1.turnoff();
+	
+	l1.turnon();
+	cout<<l1.getStatus()<<endl;
+	l1.turnoff();
+	
+
+
+
+}
