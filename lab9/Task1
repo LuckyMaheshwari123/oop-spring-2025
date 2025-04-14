@@ -1,0 +1,60 @@
+#include<iostream>
+using namespace std;
+class Vehicle{
+	string model;
+	double rate;
+	public:
+		virtual double getdailyRate()=0;
+		virtual void display()=0;
+	};
+class Car:public Vehicle{
+	string Cmodel;
+	double Crate;
+	public:
+	Car(){
+		Cmodel="unknown";
+		Crate=0;
+	}
+	Car(string model,double rate){
+		Cmodel=model;
+		Crate=rate;
+	}
+	double getdailyRate(){
+		return Crate;
+	}
+	void display(){
+		cout<<"The Car model is:"<<Cmodel<<endl;
+		cout<<"The Car rate is:"<<Crate<<endl;
+	}
+	
+};
+class Bike:public Vehicle{
+	string Cmodel;
+	double Crate;
+	public:
+	Bike(){
+		Cmodel="unknown";
+		Crate=0;
+	}
+	Bike(string model,double rate){
+		Cmodel=model;
+		Crate=rate;
+	}
+	double getdailyRate(){
+		return Crate;
+	}
+	void display(){
+		cout<<"The bike model is:"<<Cmodel<<endl;
+		cout<<"The bike rate is:"<<Crate<<endl;
+	}
+	
+};	
+			
+int main(){
+	Car c1("alto",120000);
+	Bike b1("Honda",30000.0);
+	c1.getdailyRate();
+	c1.display();
+	b1.getdailyRate();
+	b1.display();
+}
