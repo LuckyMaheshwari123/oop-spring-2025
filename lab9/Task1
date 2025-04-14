@@ -6,7 +6,7 @@ class Vehicle{
 	public:
 		virtual double getdailyRate()=0;
 		virtual void display()=0;
-		virtual ~Vehicle() {} // Virtual destructor for proper cleanup
+		virtual ~Vehicle() {} 
 	};
 class Car:public Vehicle{
 	string Cmodel;
