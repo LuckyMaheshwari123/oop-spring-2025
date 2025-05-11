@@ -1,0 +1,36 @@
+#include <iostream>
+using namespace std;
+template<typename T>
+class BankAccount{
+    T balance;
+    public:
+BankAccount(){
+    balance=0.0;
+}
+
+BankAccount(T balance):balance(balance){}
+void withdraw(T amount){
+    try{
+        if(amount>balance){
+            throw(amount-balance);
+        }
+            balance-=amount;
+            cout<<"With draw successful"<<endl;
+        }
+    
+        catch(T i){
+            cout<<"invalid Exception Amount Deficit:"<<i<<endl;
+        }
+}
+
+    
+
+};
+
+int main() {
+    BankAccount<double>B(1000);
+    B.withdraw(500.0);
+    B.withdraw(100);
+    B.withdraw(500);
+    return 0;
+}
